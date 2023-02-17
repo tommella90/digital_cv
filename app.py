@@ -20,8 +20,8 @@ SOCIAL_MEDIA = {"LinkedIn": "https://www.linkedin.com/in/tommaso-ramella/",
                 "GitHub": "https://github.com/tommella90"
                 }
 PROJECTS = {
-    "🏆 Rock Scissor Paper with OpenCV and Touchdesigner": "https://youtu.be/Sb0A9i6d320",
-    "🏆 Gradient descent visualization with Touchdesigner": "https://youtu.be/3egaMfE9388",
+    "🏆 Rock Scissor Paper with OpenCV and Touchdesigner": "https://github.com/tommella90/Rock-Scissor-Paper-move-recognition",
+    "🏆 Gradient descent visualization with Touchdesigner": "https://github.com/tommella90/Gradient-descent-Linear-Regression",
 }
 
 st.set_page_config(page_title=PAGE_TITLE,
@@ -29,6 +29,8 @@ st.set_page_config(page_title=PAGE_TITLE,
                    )
 
 st.title("TOMMASO RAMELLA - DIGITAL CV")
+st.subheader("Data scientist, postdoctoral researcher in economics")
+
 
 # --- LOAD CSS, PDF & PROFIL PIC ---
 with open(css_file) as f:
@@ -36,16 +38,7 @@ with open(css_file) as f:
 with open(resume_file, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
 profile_pic = Image.open(profile_pic)
-
-
-col1, col2 = st.columns(2, gap="small")
-with col1:
-    st.title(NAME)
-    st.write(DESCRIPTION)
-
-with col2:
-    st.image(profile_pic, width=200)
-    st.write("Email: {}".format(EMAIL))
+st.image(profile_pic, width=100)
 
 
 # websites
@@ -77,7 +70,7 @@ For these reasons, I’m looking for a new junior position as junior data scient
 
 # --- WORK HISTORY ---
 st.write('\n')
-st.subheader("Work History")
+st.subheader("WORK HISTORY")
 st.write("---")
 
 # --- JOB 1
@@ -140,7 +133,7 @@ st.write(
 
 # EDU
 st.write('\n')
-st.subheader("Education")
+st.subheader("EDUTATION")
 st.write("---")
 
 # --- EDU 1
