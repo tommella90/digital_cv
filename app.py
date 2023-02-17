@@ -6,46 +6,48 @@ from PIL import Image
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 css_file = current_dir / "styles" / "main.css"
 resume_file = current_dir / "assets" / "CV.pdf"
-profile_pic = current_dir / "assets" / "me4.jpg"
+profile_pic = current_dir / "assets" / "profile-pic (6).jpg"
 
 
 PAGE_TITLE = "Digital CV - Tommaso Ramella"
 PAGE_ICON = ":🧊:"
 NAME = "Tommaso Ramella"
 DESCRIPTION = """
-Data scientist and postdoctoral researcher in economics
+Data scientist & postdoctoral researcher in economics
 """
 EMAIL = "tommaso.ramella90@gmail.com"
-SOCIAL_MEDIA = {"LinkedIn": "https://www.linkedin.com/in/tommaso-ramella/",
-                "GitHub": "https://github.com/tommella90"
+SOCIAL_MEDIA = {"LINKEDIN": "https://www.linkedin.com/in/tommaso-ramella/",
+                "GITHUB": "https://github.com/tommella90",
+                "PORTFOLIO": "https://github.com/tommella90/Tommy_Portfolio"
                 }
 PROJECTS = {
-    "🏆 Rock Scissor Paper with OpenCV and Touchdesigner": "https://github.com/tommella90/Rock-Scissor-Paper-move-recognition",
-    "🏆 Gradient descent visualization with Touchdesigner": "https://github.com/tommella90/Gradient-descent-Linear-Regression",
+    "🤙🏻 Rock Scissor Paper with OpenCV and Touchdesigner": "https://github.com/tommella90/Rock-Scissor-Paper-move-recognition",
+    "📊 Gradient descent visualization with Touchdesigner": "https://github.com/tommella90/Gradient-descent-Linear-Regression",
+    "✒️ Wordckoud generator web app": "https://tommella90-word-count-generator-app-2tkhtd.streamlit.app/"
 }
 
 st.set_page_config(page_title=PAGE_TITLE,
                    page_icon=PAGE_ICON
                    )
 
-st.title("TOMMASO RAMELLA - DIGITAL CV")
-st.subheader("Data scientist, postdoctoral researcher in economics")
+st.title("TOMMASO RAMELLA - CV")
+
+col1, col2 = st.columns([6,1])
+with col1:
+    st.markdown("#### Data scientist & postdoctoral researcher in economics")
+
+    st.write("#")
+    for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
+        st.write(f"[{platform}]({link})")
+
+with col2:
+    with open(resume_file, "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+    profile_pic = Image.open(profile_pic)
+    st.image(profile_pic, width=200)
 
 
-# --- LOAD CSS, PDF & PROFIL PIC ---
-with open(css_file) as f:
-    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
-with open(resume_file, "rb") as pdf_file:
-    PDFbyte = pdf_file.read()
-profile_pic = Image.open(profile_pic)
-st.image(profile_pic, width=100)
 
-
-# websites
-st.write("#")
-cols = st.columns(len(SOCIAL_MEDIA))
-for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
-    cols[index].write(f"[{platform}]({link})")
 
 # SKILLS
 st.write('\n')
